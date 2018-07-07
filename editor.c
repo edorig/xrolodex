@@ -789,7 +789,7 @@ XmAnyCallbackStruct *call_data;
 {
 	Editor eObject = (Editor) client_data;
 	long item_id;
-	int data_id;
+	long int data_id;
 	char *buffer = "";	/* null string */
 	XmString clip_label = XmStringCreateSimple(eObject->app_name);
 
@@ -995,7 +995,7 @@ Time time_stamp;
 {
 	char *selection;
 	long item_id;
-	int data_id;
+	long int data_id;
 	Display *dpy = XtDisplay(eObject->edit);
 	Window win = XtWindow(eObject->edit);
 	XmString clip_label = XmStringCreateSimple(eObject->app_name);

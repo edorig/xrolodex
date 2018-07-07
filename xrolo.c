@@ -50,7 +50,7 @@ nonmodal situation simply to distinguish between the context in
 which their callbacks are activated (not as efficient).
 ********************************************************************/
 
-
+#include <stdlib.h> 
 #include "xrolo.h"
 
 
@@ -1284,9 +1284,9 @@ XtPointer call_data;
 	if (!XmStringGetLtoR(xmstring, char_set, &filename))
 		return;
 	XtUnmanageChild(fileSelectionDialog);
-	if ((int) client_data == xrolo_OPEN)
+	if ((long int) client_data == xrolo_OPEN)
 		open_rolodex_file(filename);
-	else if ((int) client_data == xrolo_SAVE_AS) {
+	else if ((long int) client_data == xrolo_SAVE_AS) {
 		/*
 		save_as_rolodex_file() *may* activate a nonmodal dialog box
 		and return with it still pending, so create a copy of the local
@@ -1334,11 +1334,11 @@ XtPointer call_data;
 	save_first_time();
 	save_current_text();
 	xrolo_db_save(xrolo_db_MOD_SAVE);
-	if ((int) client_data == xrolo_EXIT_WARNING) {
+	if ((long int) client_data == xrolo_EXIT_WARNING) {
 		dialog_deactivate(exitUnsavedDialog);
 		cleanup_and_exit(w);
 	}
-	else if ((int) client_data == xrolo_OPEN_WARNING) {
+	else if ((long int) client_data == xrolo_OPEN_WARNING) {
 		Arg arg;
 		static XtCallbackRec open_cb_list[] = {
 			{FileSelectionOK, (XtPointer) xrolo_OPEN},	/* ptr warning */
@@ -1363,11 +1363,11 @@ Widget w;
 XtPointer client_data;
 XtPointer call_data;
 {
-	if ((int) client_data == xrolo_EXIT_WARNING) {
+	if ((long int) client_data == xrolo_EXIT_WARNING) {
 		dialog_deactivate(exitUnsavedDialog);
 		cleanup_and_exit(w);
 	}
-	else if ((int) client_data == xrolo_OPEN_WARNING) {
+	else if ((long int) client_data == xrolo_OPEN_WARNING) {
 		Arg arg;
 		static XtCallbackRec open_cb_list[] = {
 			{FileSelectionOK, (XtPointer) xrolo_OPEN},	/* ptr warning */
@@ -1392,9 +1392,9 @@ Widget w;
 XtPointer client_data;
 XtPointer call_data;
 {
-	if ((int) client_data == xrolo_EXIT_WARNING)
+	if ((long int) client_data == xrolo_EXIT_WARNING)
 		dialog_deactivate(exitUnsavedDialog);
-	else if ((int) client_data == xrolo_OPEN_WARNING)
+	else if ((long int) client_data == xrolo_OPEN_WARNING)
 		dialog_deactivate(openUnsavedDialog);
 }	/* CancelUnsavedChanges */
 
@@ -1728,7 +1728,7 @@ XtPointer call_data;
 		return;
 	}
 	save_current_text();
-	temp_entry = ((int) client_data == xrolo_ASCEND) ?
+	temp_entry = ((long int) client_data == xrolo_ASCEND) ?
 		xrolo_db_sort_ascending(sort_row) : xrolo_db_sort_descending(sort_row);
 	if (temp_entry)
 		update_current_entry(temp_entry);

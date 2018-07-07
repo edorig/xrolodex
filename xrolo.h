@@ -36,6 +36,7 @@ See these modules for more details.
 #include <Xm/RowColumn.h>
 #include <Xm/Separator.h>
 #include <Xm/Protocols.h>
+#include <Xm/FileSB.h>
 
 #include "ctrlpanel.h"
 #include "listshell.h"
