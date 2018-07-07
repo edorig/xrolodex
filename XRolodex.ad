@@ -1,0 +1,93 @@
+!
+! This file, XRolodex, is the class file for the application,
+! xrolodex.  If the environment variable XUSERFILESEARCHPATH is set,
+! copy this file to the specified directory within your home
+! directory space.  If XUSERFILESEARCHPATH is not set, IN MOST CASES,
+! you can simply copy it to your home directory.  See an X user's
+! guide for a complete explanation of X resource repositories.
+!
+!
+! See the help topic "Configuration" for a table listing of the
+! resources, default value, range of values, data type, and purpose.
+!
+
+xrolodex*fontList: 9x15bold
+
+xrolodex*mainWindow*horizontalSpacing: 5
+xrolodex*mainWindow*verticalSpacing: 5
+
+xrolodex*databaseLabel*marginWidth: 5
+xrolodex*databaseLabel*marginHeight: 5
+
+xrolodex*ctrlBox*marginWidth: 5
+xrolodex*ctrlBox*marginHeight: 7
+!
+xrolodex*editBox*horizontalSpacing: 5
+xrolodex*editBox*verticalSpacing: 5
+
+xrolodex*helpShell*title: xrolodex
+
+xrolodex*helpPanedWindow*sashWidth: 20
+xrolodex*helpPanedWindow*sashHeight: 8
+xrolodex*helpPanedWindow*sashIndent: -50
+xrolodex*helpPanedWindow*spacing: 14
+
+xrolodex*helpList*visibleItemCount: 10
+xrolodex*helpList*scrollBarDisplayPolicy: STATIC
+xrolodex*helpList*listMarginWidth: 5
+xrolodex*helpList*listMarginHeight: 5
+
+xrolodex*helpText*marginWidth: 5
+xrolodex*helpText*marginHeight: 5
+xrolodex*helpText*scrollBarDisplayPolicy: STATIC
+
+xrolodex*helpAction*marginWidth: 5
+xrolodex*helpAction*marginHeight: 5
+
+xrolodex*listShell*title: xrolodex
+
+xrolodex*listList*listMarginWidth: 5
+xrolodex*listList*listMarginHeight: 5
+!!!!xrolodex*listList*highlightThickness: 0
+
+xrolodex*listAction*marginWidth: 5
+xrolodex*listAction*marginHeight: 5
+
+xrolodex*exitUnsavedDialog*title: xrolodex
+xrolodex*openUnsavedDialog*title: xrolodex
+xrolodex*overwriteDialog*title: xrolodex
+xrolodex*delimiterDialog*title: xrolodex
+xrolodex*sortDialog*title: xrolodex
+xrolodex*indexDialog*title: xrolodex
+xrolodex*messageDialog*title: xrolodex
+xrolodex*aboutDialog*title: xrolodex
+
+xrolodex*dialogControl*horizontalSpacing: 5
+xrolodex*dialogControl*verticalSpacing: 5
+
+xrolodex*dialogAction*marginWidth: 5
+xrolodex*dialogAction*marginHeight: 5
+
+xrolodex*findShell*title: xrolodex
+
+xrolodex*findControl*horizontalSpacing: 5
+xrolodex*findControl*verticalSpacing: 5
+
+xrolodex*findAction*marginWidth: 5
+xrolodex*findAction*marginHeight: 5
+
+xrolodex*printShell*title: xrolodex
+
+xrolodex*printControl*horizontalSpacing: 5
+xrolodex*printControl*verticalSpacing: 5
+
+xrolodex*printAction*marginWidth: 5
+xrolodex*printAction*marginHeight: 5
+!
+xrolodex*replaceShell*title: xrolodex
+
+xrolodex*replaceControl*horizontalSpacing: 5
+xrolodex*replaceControl*verticalSpacing: 5
+
+xrolodex*replaceAction*marginWidth: 5
+xrolodex*replaceAction*marginHeight: 5

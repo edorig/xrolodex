@@ -1,0 +1,226 @@
+!
+! This file, XRolodex, is the class file for the application,
+! xrolodex.  If the environment variable XUSERFILESEARCHPATH is set,
+! copy this file to the specified directory within your home
+! directory space.  If XUSERFILESEARCHPATH is not set, IN MOST CASES,
+! you can simply copy it to your home directory.  See an X user's
+! guide for a complete explanation of X resource repositories.
+!
+! This section lists application resources; widget resources are
+! given in the sections that follow.
+!
+! See the help topic "Configuration" for a table listing of the
+! resources, default value, range of values, data type, and purpose.
+!
+! The values given here for Boolean resources have the _opposite_
+! of their default values.  Non-Boolean resources have an alternate,
+! possibly appropriate, value.  To activate one of these opposite,
+! or alternate, values simply remove the four `!'s from the leftmost
+! columns--or insert a carriage return after the four `!'s.
+!
+! TO REPEAT, ALL VALUES GIVEN HERE DIFFER FROM THE DEFAULTS.  THUS,
+! ACTIVATING THESE RESOURCE WILL CHANGE THE CORRESPONDING BEHAVIOR.
+!
+! BEGIN APPLICATION RESOURCES:
+!
+!!!!xrolodex*centerDialogs:        False
+!!!!xrolodex*directoryMask:        ~/rolodex/*.xrolo
+!!!!xrolodex*entryDelimiter:       "[next]\n"
+!!!!xrolodex*findSensitive:        True
+!!!!xrolodex*findWraparound:       True
+!!!!xrolodex*forceSave:            False
+!!!!xrolodex*indexColumns:         30
+!!!!xrolodex*indexRow:             2
+!!!!xrolodex*indexRows:            20
+!!!!xrolodex*indexStayUp:          False
+!!!!xrolodex*minimalDialogs:       False
+!!!!xrolodex*printCommand:         dtlp
+!!!!xrolodex*printFormfeed:        True
+!!!!xrolodex*printStandardOutput:  True
+!!!!xrolodex*sortRow:              2
+!!!!xrolodex*viewportColumns:      50
+!!!!xrolodex*viewportMenuBar:      True
+!!!!xrolodex*viewportRows:         16
+!
+! END APPLICATION RESOURCES.
+!
+!
+! WIDGET RESOURCES BEGIN HERE AND CONTINUE TO THE END OF THE FILE:
+!
+! (The file xrolodex.res lists the widget names for all components
+! of the user interface.)
+!
+! For resources that are common to all widgets, such as foreground
+! and background color, you can omit widget qualifiers and have
+! thus the value apply to all widgets.  For example, the following
+! resource specification sets the background to "Gray" throughout
+! xrolodex:
+!
+!!!!xrolodex*background: Gray
+!
+! NOTE:  With HP VUE and CDE, you usually do not set colors, in order
+!        to allow their color schemes to extend to xrolodex.
+!
+! Your preferred font:
+!
+xrolodex*fontList: 9x15bold
+!
+! `mainWindow', the form widget for the main application window:
+!
+xrolodex*mainWindow*horizontalSpacing: 5
+xrolodex*mainWindow*verticalSpacing: 5
+!
+! `databaseLabel', the area for displaying the filename in the main window:
+!
+xrolodex*databaseLabel*marginWidth: 5
+xrolodex*databaseLabel*marginHeight: 5
+!
+! `ctrlBox', the control panel in the main window:
+!
+xrolodex*ctrlBox*marginWidth: 5
+xrolodex*ctrlBox*marginHeight: 7
+!
+! `edit', the viewport (scrolled edit window) in the main window:
+!
+! The next two resources place the scrollbar on the left
+! side--in close proximity to 80 percent of your cursor and
+! mouse movement.  If you have stock in a mouse manufacturer,
+! use the default setting (righthand side scrollbar); otherwise,
+! uncomment these two lines:
+!
+!!!!xrolodex*edit*scrollHorizontal: False
+!!!!xrolodex*edit*scrollLeftSide: True
+!
+! `editBox', the edit area within the viewport:
+!
+xrolodex*editBox*horizontalSpacing: 5
+xrolodex*editBox*verticalSpacing: 5
+!
+! `helpShell', the shell for the help window:
+!
+xrolodex*helpShell*title: xrolodex
+!
+! `helpPanedWindow', the paned window (panel) in the help window:
+!
+xrolodex*helpPanedWindow*sashWidth: 20
+xrolodex*helpPanedWindow*sashHeight: 8
+xrolodex*helpPanedWindow*sashIndent: -50
+xrolodex*helpPanedWindow*spacing: 14
+!
+! `helpList', the scrollable list in the first help window pane:
+!
+xrolodex*helpList*visibleItemCount: 10
+xrolodex*helpList*scrollBarDisplayPolicy: STATIC
+xrolodex*helpList*listMarginWidth: 5
+xrolodex*helpList*listMarginHeight: 5
+!!!!xrolodex*helpList*highlightThickness: 0
+!
+! `helpText', the scrollable text area in the second help window pane:
+!
+xrolodex*helpText*marginWidth: 5
+xrolodex*helpText*marginHeight: 5
+xrolodex*helpText*scrollBarDisplayPolicy: STATIC
+!
+! `helpAction', the action area in the help window:
+!
+xrolodex*helpAction*marginWidth: 5
+xrolodex*helpAction*marginHeight: 5
+!
+! `listShell', the shell for the list-based, pop-up index:
+!
+xrolodex*listShell*title: xrolodex
+!
+! `listList', scrollable list in the list-based, pop-up index:
+!
+xrolodex*listList*listMarginWidth: 5
+xrolodex*listList*listMarginHeight: 5
+!!!!xrolodex*listList*highlightThickness: 0
+!
+! `listAction', the action area in the list-based, pop-up index:
+!
+xrolodex*listAction*marginWidth: 5
+xrolodex*listAction*marginHeight: 5
+!
+! `<name>Dialog', the shells for the general-purpose dialogs boxes:
+!
+xrolodex*exitUnsavedDialog*title: xrolodex
+xrolodex*openUnsavedDialog*title: xrolodex
+xrolodex*overwriteDialog*title: xrolodex
+xrolodex*delimiterDialog*title: xrolodex
+xrolodex*sortDialog*title: xrolodex
+xrolodex*indexDialog*title: xrolodex
+xrolodex*messageDialog*title: xrolodex
+xrolodex*aboutDialog*title: xrolodex
+!!!!xrolodex*exitUnsavedDialog*title: Exit Message Dialog
+!!!!xrolodex*openUnsavedDialog*title: Open Message Dialog
+!!!!xrolodex*overwriteDialog*title: Overwrite Message Dialog
+!!!!xrolodex*delimiterDialog*title: Entry Delimiter Dialog
+!!!!xrolodex*sortDialog*title: Sort Row Dialog
+!!!!xrolodex*indexDialog*title: Index Row Dialog
+!!!!xrolodex*messageDialog*title: User Message Dialog
+!!!!xrolodex*aboutDialog*title: About Message Dialog
+!
+! `dialogControl', the control areas in the general-purpose dialogs boxes:
+!
+xrolodex*dialogControl*horizontalSpacing: 5
+xrolodex*dialogControl*verticalSpacing: 5
+!
+! `dialogAction', the action areas in the general-purpose dialogs boxes:
+!
+xrolodex*dialogAction*marginWidth: 5
+xrolodex*dialogAction*marginHeight: 5
+!
+! `findShell', the shell for the "Find Entry..." dialog box:
+!
+xrolodex*findShell*title: xrolodex
+!
+! `findControl', the control area in the "Find Entry..." dialog box:
+!
+xrolodex*findControl*horizontalSpacing: 5
+xrolodex*findControl*verticalSpacing: 5
+!
+! `findAction', the action area in the "Find Entry..." dialog box:
+!
+!!!!xrolodex*findForwardButton*showAsDefault: True
+xrolodex*findAction*marginWidth: 5
+xrolodex*findAction*marginHeight: 5
+!
+! `printShell', the shell for the "Print..." dialog box:
+!
+xrolodex*printShell*title: xrolodex
+!
+! `printControl', the control area in the "Print..." dialog box:
+!
+xrolodex*printControl*horizontalSpacing: 5
+xrolodex*printControl*verticalSpacing: 5
+!
+! `printAction', the action area in the "Print..." dialog box:
+!
+!!!!xrolodex*printCurrentButton*showAsDefault: True
+xrolodex*printAction*marginWidth: 5
+xrolodex*printAction*marginHeight: 5
+!
+! The "Search and Replace..." dialog box for the viewport (`edit')
+! window has two text areas.  The labels and text fields will not
+! align vertically unless you use a monospaced font.  Given the
+! many possible font sizes, it is inappropriate to fix the positions
+! and/or widths for the labels.  The leading space characters in the
+! labels will, however, produce aligned text fields with fixed-width
+! fonts.
+!
+! `replaceShell', the shell for the "Search and Replace..."
+! dialog box for the viewport (`edit') window:
+!
+xrolodex*replaceShell*title: xrolodex
+!
+! `replaceControl', the control area in the "Search and Replace..."
+! dialog box for the viewport (`edit') window:
+!
+xrolodex*replaceControl*horizontalSpacing: 5
+xrolodex*replaceControl*verticalSpacing: 5
+!
+! replaceAction, the action area in the "Search and Replace..."
+! dialog box for the viewport (edit) window
+!
+xrolodex*replaceAction*marginWidth: 5
+xrolodex*replaceAction*marginHeight: 5

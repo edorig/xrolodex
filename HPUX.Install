@@ -1,0 +1,62 @@
+URL:
+	http://www.sco.com/skunkware/uw7/x11/apps/xrolodex/src/
+
+
+Files changed for HPUX:
+
+V-1.2
+
+* Imakefile:
+  - Set up with a section for HP-UX (appropriate ANSI flags and Motif
+    incs/libs).
+  - Linked with -lc -lPW.
+
+* editor.c:
+  - Commented out strings after #endif's.
+  - Changed last param of XmClipboardCopy() to a pointer to a long.
+
+V-1.6
+
+* Imakefile
+    Libs  -lc -lPW no longer required.
+
+* XRolodex.ad
+  - Removed most of the comments; when trying to load the resource file 
+    we got a "ccp" error about an EOF in one of the comments.
+    
+To compile and install:
+
+xmkmf
+make install install.man
+
+
+Running:
+ Here is a model database to get you started:
+ 
+/users/xrolodex-1.6 -> cat demo.xrolo 
+####
+Jerry Smith
+Iris Computing Laboratories
+The Spectro Group, Inc.
+3916 Juan Tabo Blvd. NE
+Suite 35
+Albuquerque, New Mexico 87111  USA
+
+Phone:  +1-505-298-2700  (USA, Mountain Time Zone)
+Fax:    +1-505-298-6404
+Email:  jsmith@spectro.com
+####
+a rolodex entry
+####
+another rolodex entry
+
+
+
+Info:
+        xrolodex: Preliminary Design Issues
+        http://www.unx.com/DD/advisor/docs/aug95/aug95.jsmith.shtml
+        
+        
+Source:
+        http://www.spectro.com/
+        ftp://ftp.nmia.com/pub/spectro/

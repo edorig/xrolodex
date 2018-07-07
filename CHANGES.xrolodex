@@ -1,0 +1,119 @@
+File:  CHANGES.xrolodex
+
+Version:  xrolodex 1.1
+
+- fixed the one known error:  modifications to final entry led to
+  last two entries being swapped
+- added `-iconName' command-line option to allow multiple instance
+  of `xrolodex' to have different icon names
+- added client icons for all dialog objects
+- modified behavior of pop-up windows so that dialogs are
+  transient children of the primary application window, controlled
+  by the `minimalDialogs' resource
+- modified behavior of index facility so that it stays up and is
+  dynamically updated during rolodex modifications (controlled by
+  `indexStayUp' resource)
+- "Save" now forces a save (controlled by the `forceSave' resource)
+- added a facility for dynamic delimiter modification, providing a
+  primitive import-export capability with other rolodex applications
+  such as `xrolo'
+- modified back-up strategy to use rename(2), instead of system(3)
+  with cp(1)
+- modified sorting to allow users to set the sort row, and added the
+  `sortRow' resource
+- modified index to allow users to set the index row, and added the
+  `indexRow' resource
+- added support for `editres' protocol
+- N O T E:  `xrolodex' now includes code for supporting the `editres'
+  protocol.  If you are using an X11R5 release that supports this
+  facility, you can define the preprocessor constant EDITRES; see the
+  X_FLAGS macro constant in `xrolo.make'
+
+Version:  xrolodex 1.2
+
+- fixed a one-line omission in `xrolo.c' related to a failure to save
+  a changed rolodex entry when you switch to a new entry via the index
+
+Version:  xrolodex 1.3
+
+- added wraparound search behavior in "Find Entry..." window
+- changed case sensitivity toggles from radio button design to a
+  simple toggle button
+
+Version:  xrolodex 1.4
+
+Substituted the use of XmNskipAdjust (which didn't always work
+properly in previous Motif releases) for code that physically
+restricts the size of the action area in dialog boxes, the
+help window, and others (which does not work in Motif 2.0).
+The latter code is now bracketed by the #define constant
+RESTRICT_ACTION_AREA.
+
+Version:  xrolodex 1.5
+
+The changes are mostly cosmetic for this release, including:
+
+NOTE:  xrolodex now depends on the class file XRolodex for proper
+       visual spacing--several hard-coded resources have been
+       removed and fallback resources have been added.  This change
+       might lead to _small_ problems for users with Motif 1.1
+       environments because Motif 1.1 implementations have fallback
+       resource-related errors.
+
+- removed several hard-coded resources that forced "adequate" visual
+  spacing
+- added fallback resources to compensate for the previously
+  hard-coded visual spacing resources, but see the previous note
+- replaced the very short XRolodex class file with a very long, well
+  commented class file
+- added numerous resource settings to the XRolodex class file to
+  improve the visual appearance of various command button containers
+- modified the help window to present an index of help topics in
+  the top pane of a paned window.  The help text is presented in
+  the bottom pane.  This design is superior to the old approach,
+  which required the user to pick help topics from the menubar's
+  help menu
+- factored the help topics--there are more topics, each topic being
+  more specific
+- added a useless, but now required to be fashionable,
+  "About xrolodex..." dialog box
+- removed the dual "Quit"/"Exit" entries from the "File" menu in favor
+  of a single "Exit" entry, which prompts for unsaved changes if
+  necessary
+- added a "New..." file menu option which is equivalent to "Open..."
+  (It is still necessary to name a new file before adding entries.)
+- replaced the vi-like terminology for the "New/Ins" and "New/Add"
+  command buttons and menu options with "Insert" and "Insert After",
+  respectively
+- changed the command button containers in the find, search and
+  replace, and other windows to be consistent with other dialogs
+  (In particular, the command buttons are now centered.)
+
+Depending on your platform, in particular, the monitor resolution,
+the one visual change that you might want to change is the addition
+of more vertical space to the control panel.  The class resource
+file contains the following section for the control panel:
+!
+! `ctrlBox', the control panel in the main window:
+!
+xrolodex*ctrlBox*marginWidth: 5
+xrolodex*ctrlBox*marginHeight: 7
+
+If xrolodex appears "too tall", reduce the `marginHeight' resource
+from 7 to, say, 5.
+
+Version:  xrolodex 1.6
+
+- added printing facilities
+- modified behavior for centering of dialogs to center over the
+  primary application window, not the root window
+
+Beginning with this release (1.6) xrolodex will be available in
+a CDE variation, dtrolodex.
+
+
+Jerry Smith
+Iris Computing Laboratories
+The Spectro Group, Inc.
+jsmith@spectro.com
+

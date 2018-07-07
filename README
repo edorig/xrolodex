@@ -1,0 +1,264 @@
+File:  README.xrolodex
+
+Version:  xrolodex 1.6
+
+/**********************************************************************
+*  Copyright (c) 1991 - 1996 Iris Computing Laboratories.
+*
+*  This software is provided for demonstration purposes only.  As
+*  freely-distributed, modifiable source code, this software carries
+*  absolutely no warranty.  Iris Computing Laboratories disclaims
+*  all warranties for this software, including any implied warranties
+*  of merchantability and fitness, and shall not be liable for
+*  damages of any type resulting from its use.
+*  Permission to use, copy, modify, and distribute this source code
+*  for any purpose and without fee is hereby granted, provided that
+*  the above copyright and this permission notice appear in all copies
+*  and supporting documentation, and provided that Iris Computing
+*  Laboratories not be named in advertising or publicity pertaining
+*  to the redistribution of this software without specific, written
+*  prior permission.
+**********************************************************************/
+
+Programmers:  See the comments near the end of this file regarding
+the makefile, Motif versions, etc.
+
+`xrolodex' is a Rolodex(R)-style application for maintaining a set of
+"virtual business cards."  `xrolodex's top-level window includes four
+principal components:
+ - an application-level menu bar,
+ - a label area for displaying the name of the current rolodex file,
+ - a control panel for entry-level rolodex manipulation, and
+ - an edit window (with local menu bar) for editing the currently
+   displayed rolodex entry, also providing a basic viewport facility.
+
+`xrolodex' has the following command-line option:
+
+{system prompt} xrolodex [<filename>] [-iconName <icon name>]
+
+The filename is optional.  That is, you can specify a file via the
+file selection box that's activated by the "Open" entry in the "File"
+menu.
+
+To create a new rolodex file, first use "Open" to associate the
+rolodex contents with a filename, and then simply type in each entry.
+
+`xrolodex' has the following client-level resources:
+
+Resource            Default Value    Range of Values       Type
+--------            -------------    ---------------       ----
+centerDialogs       True             {True, False}         Boolean
+directoryMask       $HOME/*.xrolo    any char. string      string
+entryDelimiter      "####\n"         any char. string      string
+findSensitive       False            {True, False}         Boolean
+findWraparound      False            {True, False}         Boolean
+forceSave           True             {True, False}         Boolean
+indexColumns        30               positive integer      integer
+indexRow            1                positive integer      integer
+indexRows           15               positive integer      integer
+indexStayUp         True             {True, False}         Boolean
+minimalDialogs      True             {True, False}         Boolean
+sortRow             1                positive integer      integer
+viewportColumns     40               @ 6 or greater        integer
+viewportMenuBar     False            {True, False}         Boolean
+viewportRows        12               @ 12 or greater       integer
+
+The `centerDialog' resource applies to the pop-up, warning dialogs
+only, not the text-entry dialogs.  You can control various aspects of
+the text-entry dialogs via the resource `minimalDialogs'.
+
+The default viewport menu is a pop-up, background menu; see the
+"Editor" help menu.  There are approximate lower limits on the
+size of the viewport window because Motif will force the viewport's
+row-column dimensions to be large enough to fill the top-level window,
+which must be large enough to accommodate the top-level menu bar and
+the control panel.
+
+Unless otherwise specified using the `directoryMask' resource,
+`xrolodex' uses your home directory as the reference point for the
+file selection box.
+
+The `findSensitive' and `findWraparound' resources control the
+start-up states of the "Case sensitive" and "Wraparound" toggles
+in the "Find Entry..." window.
+
+The `forceSave' resource controls whether the "Save" option in the
+"File" menu saves the rolodex file or simply ignores the save request
+when there have been no modifications.
+
+The default card delimiter sequence is "####" on a separate line,
+that is, "####\n".  There is no reason for the typical `xrolodex'
+user to specify the delimiter option; it is transparent during normal
+`xrolodex' use.  Note, however, that you can dynamically modify the
+delimiter sequence from the "Options" menu.
+
+The editor facility provides menus for copy, cut, and paste
+operations and for search and replace operations.  Again, the
+editor window allows the user to edit the text within the currently
+displayed rolodex entry, not the entire rolodex file--the scrollbar
+will not navigate across entries.  Entry-level rolodex operations
+are performed elsewhere.  Since the editor maintains its internal
+state from one entry to the next, you can copy and paste text
+across entries.
+
+With `xrolodex' the rolodex database is completely free-form.  There
+are no limitations on the number of entries, and no limitations on
+the character dimensions of an individual entry.  Individual
+entries are delimited in the rolodex file by preceding each entry
+with "####" on a separate line--`xrolodex' depends on this convention.
+Note that you can specify a different delimiter sequence from the
+command line.
+
+Since `xrolodex's rolodex file is a simple stream of bytes, experienced
+UNIX users can use other text processing tools to manipulate the
+rolodex file(s).  In particular, you can use your own/preferred
+text editor, if you need to perform a considerable amount of editing
+on a particular file.  With `xrolodex' you can maintain as many distinct
+rolodex files as you'd like.  The "Open..." menu option allows you to
+load any rolodex file via a file selection box.  The file type is
+"*.xrolo" in the user's home directory.
+
+During normal operations, `xrolodex' maintains a rolodex file in
+memory.  That is, when you "open" a file, its contents are read
+into RAM, and all rolodex operations are applied to this "memory
+file."  When you select "Save" from the "File" menu, the rolodex
+file as it exists in memory is saved to disk, replacing the
+original rolodex file.  The first time that a file is saved after
+it's been loaded with "Open..." a back-up of the original file
+is created with ".bak" appended to the filename.  For subsequent save
+operations (without an intervening use of "Open..."), the back-up
+file remains unchanged.
+
+The "Quit" menu option terminates the application without saving
+pending modifications to the rolodex file.  If there are unsaved
+changes to the file, you are prompted and given the opportunity to
+save changes to disk before the program terminates.  The "Exit"
+menu option terminates the application after saving any pending
+modifications to the rolodex file; the save process is automatic,
+i.e., there is no user prompt.
+
+There is no "New" menu entry.  To create a new rolodex file, first
+use "Open" to associate the rolodex contents with a filename, and
+then simply type in each entry.
+
+When viewing an individual rolodex entry you can change it simply
+by moving the mouse pointer into the rolodex entry viewport and
+using normal Motif editing commands--the viewport is implemented
+with a standard Motif text widget.  If the number of lines exceeds
+the height of the window, you can scroll the edit window.
+
+Within the edit window you can copy, cut, and paste text for the
+current rolodex entry, and you can use the "Find Selection" menu
+option to find the next occurence (forward) of the currently
+selected text.  The "Search and Replace..." menu option activates
+a top-level window that you can use to enter search text manually.
+It also contains a "Replace" button so that you can "Find" a
+text segment and then "Replace" it.  Coordinated operations with
+"Find" and "Replace" will allow you to make changes to the text
+throughout the current rolodex entry.
+
+There are pull-down menus in the main menu bar that group together
+logically related operations for entry-level rolodex manipulation.
+At present, "Edit" contains the buttons:  "New/Ins", "New/Add",
+"Copy", "Delete", and "Undelete".  The "Find" menu presently contains
+the buttons:  "Index..." and "Find Entry...".  The latter two buttons
+pop up dialog boxes.  These buttons are explained below.
+
+For convenience, several of these buttons are present in the control
+panel as well.  The control panel is to the left of the viewport and
+is used for moving *among* rolodex entries.  It contains buttons for
+the most commonly used operations so that the user doesn't have to
+go to a pull-down menu.  The "First", "Last", "Next", and "Previous"
+buttons are self-explanatory.  Several other command buttons require
+explanation.
+
+"Index..." activates a top-level window that, by default, displays
+the first line/row of every rolodex entry.  With this convention in
+mind, you should make sure that the beginning of the first line of
+each entry contains meaningful information, e.g., a person's name.
+If you select one of the entries displayed in the index window, that
+rolodex entry will be displayed in the edit window/viewport.
+Optionally, you can set the index row with the `indexRow' resource,
+or modify it dynamically from the dialog box that's accessed through
+the "Set Index Row" submenu.
+
+"Find Entry..." activates a top-level window in which you can enter
+a string.  `xrolodex' will search forward or backward, beginning with
+the next (previous) rolodex entry, for the first entry that contains
+the specified text string, presenting that entry in the viewport.
+By default, text searches across entries are case insensitive.  You
+can enable case sensitive searching with a toggle button from the
+radio box.  You can also enable wraparound searches from the last
+to the first and the first to the last entries.
+
+"New/Ins" clears the edit window and allows you to enter a new
+rolodex entry.  `xrolodex' *automatically* saves the contents of the
+current rolodex entry in the file (if modifications have been
+made) any time that you preform an operation that switches to
+another rolodex entry, e.g., "Next", "Index", etc.
+
+"New/Add" is similar to "New/Ins", except that it inserts/adds the
+entry *after* the current entry.  The insert/add operations are con-
+sistent with text editors, such as `vi', where "insert" means before
+the current character and "add" means after the current character.
+Also, "New/Add" makes it possible to add an entry to the very end
+of the rolodex database.
+
+You can select "Copy" to enter a duplicate of any entry into the
+rolodex file.  This provide a convenient mechanism for creating a new
+entry by copying an existing rolodex entry, and then making changes
+to the new entry.  As an alternative, you could use "Copy" (from the
+viewport "Edit" menu) to copy an entry's text to the clipboard,
+select "New" to create an empty entry, and then "Paste" the text
+from the clipboard--pressing "Copy" is considerably faster.
+
+"Delete" deletes the current rolodex entry.  `xrolodex' provides a
+single level of undo capability for "Delete"ions with the "Undelete"
+button.  "Undelete" recovers the deleted entry at the current
+position in the rolodex file.
+
+Programmers
+-----------
+There is a simple makefile in `xrolo.make', so that you can simply copy
+the entire project into a working directory and type `make -f xrolo.make',
+if you don't want to install `xrolodex' in the MIT or Motif X source tree.
+`xrolo.make' is also useful reading for understanding alternate configuration
+strategies.  With the HP and SGI platforms, if you prefer using `imake', you
+may need to modify `Imakefile' to include several of the preprocessor/macro
+settings from `xrolo.make'.
+
+In particular, `xrolodex' uses several long string constants, and some
+compilers have a rather small default limit for the length of string
+constants.  In these environments, you will have to set the compiler option
+that increases the maximum allowable length of a string.  Simply increase
+the string length parameter until the compiler no longer generates an error.
+
+This source code has been tested extensively on a Sun SPARCstation
+with MIT X, Motif 1.1.x and Motif 1.2 under CodeCenter/Saber-C.  It has
+also been used extensively on HP-UX 9.x and IRIX 5.3, and recently on
+a PC with Linux 1.2.8, Slackware 2.2, and MetroLink Motif 2.x.  There
+are no known errors/problems.
+
+N O T E:  `xrolodex' now includes code for supporting the `editres'
+protocol.  If you are using an X11R5 release that supports this
+facility, you can define the preprocessor constant EDITRES; see the
+X_FLAGS macro constant in `xrolo.make'.
+
+This `xrolodex' is an enhancement of the original `xrolodex' that appears
+as a design project, along with `xfilter', in the book Designing X Clients
+with Xt/Motif, Jerry D. Smith, Morgan Kaufmann Publishers, San Mateo, CA,
+ISBN 1-55860-255-0.  The high-level pseudo-objects used in this project
+are described in detail in the book.
+
+THIS APPLICATION CURRENTLY USES THE DEFAULT XT ERROR HANDLER AND CAN
+TERMINATE UNEXPECTEDLY--WITH UNSAVED CHANGES IN THE EDIT WINDOW.
+YOU MAY WANT TO ADD A CUSTOMIZED ERROR HANDLER.  A DO-NOTHING ERROR
+HANDLER HAS BEEN PROVIDED; YOU CAN INCLUDE IT BY UNCOMMENTING THE
+APPROPRIATE PREPROCESSOR CONSTANT IN THE MANUAL MAKEFILE `xrolo.make'.
+
+
+Jerry Smith
+Iris Computing Laboratories
+The Spectro Group, Inc.
+jsmith@spectro.com
+

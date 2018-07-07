@@ -1,0 +1,27 @@
+.TH XROLODEX l "8 March 1996"
+.SH NAME
+xrolodex \- X Window System Rolodex(R) Application \- Version 1.6
+.SH SYNOPSIS
+.B xrolodex [\-help]
+[
+.I <filename>
+]
+[
+.I -iconName <icon name>
+]
+\-help
+.SH DESCRIPTION
+.LP
+.I xrolodex
+is a rolodex-like application for X Window System environments.  It has
+a Motif-based user interface.  Each button and menu for
+.I xrolodex
+is described in detail in the help system.
+.SH AUTHOR
+.PP
+Jerry Smith, Iris Computing Laboratories
+.PP
+Copyright 1991 - 1996, Iris Computing Laboratories
+.PP
+Please see the copyright and distribution notice in the help topic
+"Legal Notice".

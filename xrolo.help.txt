@@ -1,0 +1,531 @@
+/**** xrolo.help.txt ****/
+
+/**********************************************************************
+This file contains the text for xrolodex's help screens.
+
+The help text is a null-terminated array of `HelpItems', where each
+item has the structure:
+
+typedef struct {
+	char *topic;
+	char *text;
+} HelpItem;
+
+To add more help topics, simply insert the new bracketed pair in
+the form
+
+{<topic-name>, <topic-text>},
+
+You can copy the following one and simply fill in the text between
+the _two_ pairs of quotes:
+
+		{"",
+"\n\
+\n\
+"
+		},
+
+The bracketed pair for each help topic is preceded by the a comment
+with the text "HELP TOPIC".  To search for the beginning of each pair,
+simply search for this string.
+***********************************************************************/
+
+	static int xrolo_help_rows = 20;
+	static int xrolo_help_columns = 70;
+
+	static HelpItem help_data[] = {
+		/* HELP TOPIC */
+		{"Help Window Navigation",
+"Help Window Navigation:\n\
+\n\
+Select an entry in the index in the top pane and xrolodex displays\n\
+help text for that topic in the bottom pane.\n\
+\n\
+Note that as long as the scrollable list in the top pane has the\n\
+keyboard focus, you can navigate up and down sequentially through\n\
+the help topics with the up and down arrow keys.  Otherwise, simply\n\
+single-select an index entry with the mouse to display that topic.\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"General Use",
+"General Use:\n\
+\n\
+xrolodex is a Rolodex(R)-style cardfile application.  xrolodex's\n\
+top-level window includes four principal components:\n\
+\n\
+ - an application-level menubar\n\
+ - a label area for displaying the name of the current rolodex file\n\
+ - a control panel for entry-level rolodex manipulation\n\
+ - an edit window (with local menubar or pop-up menu) for editing the\n\
+   current rolodex entry, also providing a basic viewport facility\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"Start-up File",
+"Start-up File:\n\
+\n\
+xrolodex has one command-line option for naming the icon:\n\
+\n\
+{your prompt} xrolodex [<filename>] [-iconName <icon name>]\n\
+\n\
+(Note the mixed upper- and lowercase characters in `-iconName'.)\n\
+\n\
+A start-up filename is optional.  That is, you can specify a file\n\
+from the file selection box that is activated by the \"New...\" or\n\
+\"Open...\" entries in the \"File\" menu.\n\
+\n\
+\"New...\" and \"Open...\" are the same.  To create a _new_ rolodex\n\
+file, first use \"New...\" (or \"Open...\") to associate the rolodex\n\
+contents with a nonexistent filename, and then simply type in each\n\
+entry--you must provide a filename before entering rolodex entries.\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"File Operations",
+"File Operations:\n\
+\n\
+During normal operations, xrolodex maintains a rolodex file in\n\
+memory.  That is, when you \"Open...\" a file, its contents are read\n\
+into RAM, and all rolodex operations are applied to this \"memory\n\
+file.\"  When you select \"Save\" from the \"File\" menu, the rolodex\n\
+file as it exists in memory is saved to disk, replacing the\n\
+original rolodex file.  The first time that a file is saved after\n\
+it has been loaded with \"Open...\" a back-up of the original file\n\
+is created with \".bak\" appended to the filename.  For subsequent\n\
+save operations (without an intervening use of \"Open...\"), the\n\
+back-up file remains unchanged.\n\
+\n\
+The \"Save As...\" menu option saves the current rolodex file under\n\
+an alternate name.\n\
+\n\
+Use \"New...\" to open a new, empty rolodex file.\n\
+\n\
+The \"Print...\" menu option activates the Print dialog box (see the\n\
+help topic \"Printing\").\n\
+\n\
+The \"Exit\" menu option terminates the application.  If there are\n\
+unsaved changes to the rolodex file, you are prompted and given an\n\
+opportunity to save changes to disk before the program terminates.\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"File Format",
+"File Format:\n\
+\n\
+With xrolodex the rolodex file is completely free-form.  There are\n\
+no limitations on the number of entries, and no limitations on the\n\
+character dimensions of an individual entry.  Individual entries\n\
+are separated in the rolodex file by preceding each entry with a\n\
+special character sequence, which is transparent to users.  We\n\
+sometimes refer to this separator string as the delimiter sequence.\n\
+Users who like to edit rolodex files from a text editor typically\n\
+include a newline character in the delimiter sequence, so that the\n\
+delimiter appears on a separate line in the rolodex file.\n\
+\n\
+Because xrolodex's rolodex file is a simple stream of bytes,\n\
+experienced UNIX users can use other text processing tools to\n\
+manipulate the rolodex file(s).  In particular, you can use your\n\
+own/preferred text editor, if you need to perform a considerable\n\
+amount of editing on a particular file.  With xrolodex you can\n\
+maintain as many distinct rolodex files as you need.  The \"Open...\"\n\
+menu option allows you to load any rolodex file via a file selection\n\
+box.  The default file type/specification is \"*.xrolo\" in the user's\n\
+home directory.  You might want to add a subdirectory specification\n\
+so that all your rolodex files exist in a separate directory within\n\
+your home directory.  (See the example in the class file for\n\
+xrolodex, namely, XRolodex.)\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"Rolodex Entries",
+"Rolodex Entries:\n\
+\n\
+When viewing an individual rolodex entry you can change it simply\n\
+by moving the mouse pointer into the rolodex entry viewport and\n\
+using normal Motif editing commands--the viewport is implemented\n\
+with a standard Motif text widget.  If the number of lines exceeds\n\
+the height of the window, you can scroll the edit window.\n\
+\n\
+\"Insert\" clears the edit window and allows you to enter a new\n\
+rolodex entry before (prior to) the current entry.  xrolodex\n\
+_automatically_ saves the contents of the current rolodex entry (if\n\
+modifications have been made) any time you perform an operation that\n\
+switches to another rolodex entry, e.g., \"Next\", \"Index\", etc.\n\
+\n\
+You can select \"Copy\" to enter a duplicate of any entry into the\n\
+rolodex file.  This provide a convenient mechanism for creating a new\n\
+entry by copying an existing rolodex entry, and then making changes\n\
+to the new entry.  As an alternative, you could use \"Copy\" (from the\n\
+viewport \"Edit\" menu) to copy an entry's text to the clipboard,\n\
+select \"Insert\" to create an empty entry, and then \"Paste\" the\n\
+text from the clipboard--pressing \"Copy\", however, is considerably\n\
+faster.\n\
+\n\
+\"Delete\" deletes the current rolodex entry.  xrolodex provides a\n\
+single level of undo capability for \"Delete\"ions with the \"Undelete\"\n\
+button.  \"Undelete\" recovers the deleted entry at the current\n\
+position in the rolodex file, not at its original location.\n\
+\n\
+\"Insert After\" is similar to \"Insert\", except that it inserts the\n\
+entry _after_ the current entry.\n\
+\n\
+Note that with \"Insert After\" you can add an entry to the very end\n\
+of the rolodex file.\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"Control Panel",
+"Control Panel:\n\
+\n\
+For convenience, several of the menu buttons are present in the\n\
+control panel as well.  The control panel is to the left of the\n\
+viewport and is used for moving _among_ rolodex entries.  It contains\n\
+buttons for the most commonly used operations so that the user does\n\
+not have to go to a pull-down menu.  The \"First\", \"Last\", \"Next\",\n\
+and \"Previous\" buttons are self-explanatory.  Several other command\n\
+buttons require explanation.\n\
+\n\
+\"Insert\" clears the edit window and allows you to enter a new rolodex\n\
+entry.  xrolodex _automatically_ saves the contents of the current\n\
+rolodex entry in the file (if modifications have been made) any time\n\
+that you perform an operation that switches to another rolodex entry\n\
+, e.g., \"Next\", \"Index\", etc.\n\
+\n\
+You can select \"Copy\" to enter a duplicate of any entry into the\n\
+rolodex file.  This provide a convenient mechanism for creating a new\n\
+entry by copying an existing rolodex entry, and then making changes\n\
+to the new entry.  As an alternative, you could use \"Copy\" (from the\n\
+viewport \"Edit\" menu) to copy an entry's text to the clipboard,\n\
+select \"Insert\" to create an empty entry, and then \"Paste\" the\n\
+text from the clipboard--pressing \"Copy\", however, is considerably\n\
+faster.\n\
+\n\
+\"Index...\" activates a top-level window that, by default, displays\n\
+the first line/row of every rolodex entry.  With this convention in\n\
+mind, you should make sure that the beginning of the first line of\n\
+each entry contains meaningful information, e.g., a person's name.\n\
+If you select one of the entries displayed in the index window, that\n\
+rolodex entry will be displayed in the edit window/viewport.\n\
+Optionally, you can set the index row with the `indexRow' resource,\n\
+or modify it dynamically from the dialog box that is accessed through\n\
+the \"Set Index Row\" submenu.\n\
+\n\
+The buttons in the control panel are organized such that those\n\
+buttons providing duplicate services, i.e., operations equivalent to\n\
+a button in a pull-down menu, are at the bottom of the control panel.\n\
+Thus, if you need to reduce the height of xrolodex, these\n\
+nonessential buttons will be clipped (made invisible) before the\n\
+essential buttons.  In this case, you can use the pull-down menus to\n\
+perform these operations until you free up enough screen space to\n\
+expand xrolodex such that the entire control panel is once again\n\
+visible.\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"Searching",
+"Searching:\n\
+\n\
+\"Find Entry...\" activates a top-level window in which you can enter\n\
+a string.  xrolodex will search forward or backward, beginning with\n\
+the next (previous) rolodex entry, for the first entry that contains\n\
+the specified text string, presenting that entry in the viewport.\n\
+By default, text searches across entries are case insensitive.  You\n\
+can enable case sensitive searching with a toggle button from the\n\
+toggle box.  You can also enable wraparound searches from the last\n\
+to the first and the first to the last entries.\n\
+\n\
+\"Index...\" activates a top-level window that, by default, displays\n\
+the first line/row of every rolodex entry.  With this convention in\n\
+mind, you should make sure that the beginning of the first line of\n\
+each entry contains meaningful information, e.g., a person's name.\n\
+If you select one of the entries displayed in the index window, that\n\
+rolodex entry will be displayed in the edit window/viewport.\n\
+Optionally, you can set the index row with the `indexRow' resource,\n\
+or modify it dynamically from the dialog box that is accessed through\n\
+the \"Set Index Row\" submenu.\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"Sorting",
+"Sorting:\n\
+\n\
+The \"Sort\" menu contains three entries.  \"Ascending\" and \"Descending\"\n\
+initiate the sort directly from the menu, so that you do not have to\n\
+keep an active sort window.  \"Set Sort Row\" activates a dialog box\n\
+where you can change the sort row (field).  The rolodex entries are\n\
+sorted in memory and there is no provision for undoing the sort, so\n\
+you may want to consider saving the rolodex file before sorting.\n\
+\n\
+Each rolodex entry is free-form--there are no formatted sort fields.\n\
+You can, in effect, establish sort fields by placing sort-related\n\
+information on specific rows, consistently for each rolodex entry,\n\
+e.g., on the first line.  Since sorting is applied to the entire\n\
+stream of characters that makes up the entry (beginning at the\n\
+current sort row), line breaks have no real effect on the sorting\n\
+algorithm.  In the simplest case, you can just enter a person's name\n\
+on the first line, last name first, e.g.:\n\
+\n\
+<last name>, <first name>, <middle initial>\n\
+<remainder of rolodex entry>\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"Printing",
+"Printing:\n\
+\n\
+The \"Print...\" entry in the \"File\" menu activates the Print dialog\n\
+box.  From this dialog you can set two print states via toggle\n\
+buttons, as well as the actual print command.  You can also elect to\n\
+print either the current entry or all entries.\n\
+\n\
+The \"Print to standard output\" toggle is off by default; this toggle\n\
+sends the text to standard output instead of to the printer.  Unless\n\
+you have redirected standard output to a file, enabling this option\n\
+will send text to the command window from which you started xrolodex.\n\
+\n\
+The \"Add formfeed after each entry\" toggle is off by default,\n\
+allowing multiple rolodex entries per page and allowing entries to\n\
+split across pages.  If you enable this option, xrolodex will print\n\
+one entry per page (and potentially printing many pages).\n\
+\n\
+The \"Print Current\" button prints the rolodex entry currently\n\
+displayed in the rolodex viewport.  The \"Print All\" button prints all\n\
+of the rolodex entries for the current rolodex file.\n\
+\n\
+The \"Print command:\" text field is valid only when the text is\n\
+directed to the printer, not to standard output.  In this field you\n\
+can specify any valid print command for your workstation; the default\n\
+is \"lp\".  You can configure the default (start-up) print command with\n\
+the `printCommand' resource (see the help topic \"Configuration\").\n\
+\n\
+Note that under CDE you can specify the \"dtlp\" print command, in lieu\n\
+of manually building an \"lp\" print command in the text field with\n\
+various command-line options.  If you specify \"dtlp\", it will provide\n\
+a dialog box for entering the number of copies, etc.\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"Options",
+"Options:\n\
+\n\
+The \"Options\" menu's first entry invokes the \"Delimiter\" menu from\n\
+which you can dynamically modify the delimiter sequence for rolodex\n\
+entries (see the \"Files\" help topic).  Note that most users have no\n\
+reason to modify, or even be aware of, the delimiter sequence.  This\n\
+facility is intended primarily for users who want to import or export\n\
+rolodex files for other rolodex applications that have a fixed\n\
+delimiter sequence.\n\
+\n\
+You can modify the current delimiter dynamically via a text-entry\n\
+dialog, or you can reset the delimiter to the start-up default value,\n\
+that is, to the value specified with the `entryDelimiter' resource.\n\
+\n\
+When specifying a delimiter in the dialog box, you can use any\n\
+printable character, as well as several escape sequences for special\n\
+characters:\n\
+\n\
+\\n -- newline,\n\
+\\t -- horizontal tab,\n\
+\\v -- vertical tab,\n\
+\\b -- backspace,\n\
+\\r -- carriage return,\n\
+\\f -- formfeed,\n\
+\\\\ -- backslash,\n\
+\\' -- single quote,\n\
+\\\" -- double quote, and\n\
+\\nnn -- the three-digit ASCII octal value for any character.\n\
+\n\
+The following examples illustrate several possible delimiters,\n\
+including multiple ways of specifying the same delimiter:\n\
+\n\
+Dialog Box Entry   Interpretation         Comment\n\
+----------------   --------------         -------\n\
+####\\n             ####<newline>          This is the default value,\n\
+                                          \"####\" on a separate line\n\
+\\043###\\n          ####<newline>          43 (octal) is ASCII for \"#\"\n\
+####\\012           ####<newline>          12 (octal) is <newline>\n\
+\\f\\n               <formfeed><newline>    Formfeed on a separate line\n\
+[next-entry]\\n      [next-entry]<newline> A simple text string\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"Viewport Editor",
+"Viewport Editor:\n\
+\n\
+xrolodex can be configured with either a local menubar or a pop-up\n\
+menu system for the editor/viewport facility.  If xrolodex does not\n\
+display a local menubar at the top of the viewport, you should use\n\
+mouse button 3 to activate the pop-up menu system.  To request a\n\
+local menubar for the viewport instead of the pop-up menu system,\n\
+set the resource `viewportMenuBar' to \"True\", e.g.,\n\
+\n\
+xrolodex*viewportMenuBar:  True\n\
+\n\
+The editor facility provides menus for copy, cut, and paste\n\
+operations and for search-and-replace operations.  The editor\n\
+window allows the user to edit the text within the currently\n\
+displayed rolodex entry, not the entire rolodex file--the scrollbar\n\
+will not navigate across entries.  Entry-level rolodex operations\n\
+are performed elsewhere.  Since the editor maintains its internal\n\
+state from one entry to the next, you can copy and paste text\n\
+across entries.\n\
+\n\
+Within the edit window you can copy and cut the primary selection\n\
+to the clipboard, paste text from the clipboard, and clear the\n\
+clipboard.  Copy, cut, paste, and clear operations apply to the Motif\n\
+clipboard, not the X clipboard.  You can use the \"Find Selection\"\n\
+menu option to find the next occurence (forward) of the currently\n\
+selected text.  The \"Search and Replace...\" menu option activates a\n\
+top-level window that you can use to enter search text manually.  It\n\
+also contains a \"Replace\" button so that you can \"Find\" a text\n\
+segment and then \"Replace\" it.  Coordinated operations with \"Find\"\n\
+and \"Replace\" will allow you to make changes to the text throughout\n\
+the current rolodex entry.\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"Configuration",
+"Configuration:\n\
+\n\
+xrolodex has the following command-line option:\n\
+\n\
+{your prompt} xrolodex [<filename>] [-iconName <icon name>]\n\
+\n\
+The filename is optional.  That is, you can specify a file via the\n\
+file selection box that is activated by the \"Open...\" entry in the\n\
+\"File\" menu.\n\
+\n\
+xrolodex has the following application resources:\n\
+\n\
+Resource            Default Value    Range of Values       Type\n\
+--------            -------------    ---------------       ----\n\
+centerDialogs       True             {True, False}         Boolean\n\
+directoryMask       $HOME/*.xrolo    any char. string      string\n\
+entryDelimiter      \"####\\n\"         any char. string      string\n\
+findSensitive       False            {True, False}         Boolean\n\
+findWraparound      False            {True, False}         Boolean\n\
+forceSave           True             {True, False}         Boolean\n\
+indexColumns        30               positive integer      integer\n\
+indexRow            1                positive integer      integer\n\
+indexRows           15               positive integer      integer\n\
+indexStayUp         True             {True, False}         Boolean\n\
+minimalDialogs      True             {True, False}         Boolean\n\
+printCommand        lp               any char. string      string\n\
+printFormfeed       False            {True, False}         Boolean\n\
+printStandardOutput False            {True, False}         Boolean\n\
+sortRow             1                positive integer      integer\n\
+viewportColumns     40               @ 6 or greater        integer\n\
+viewportMenuBar     False            {True, False}         Boolean\n\
+viewportRows        12               @ 12 or greater       integer\n\
+\n\
+The `centerDialogs' resource applies to the pop-up, warning dialogs\n\
+only, not the text-entry dialogs.  You can control various aspects of\n\
+the text-entry dialogs via the resource `minimalDialogs'.\n\
+\n\
+The default viewport menu is a pop-up, background menu; see the\n\
+\"Editor\" help menu.  There are approximate lower limits on the\n\
+size of the viewport window because Motif will force the viewport's\n\
+row-column dimensions to be large enough to fill the top-level window,\n\
+which must be large enough to accommodate the top-level menubar and\n\
+the control panel.\n\
+\n\
+The default card delimiter sequence is \"####\" on a separate line,\n\
+that is, \"####\\n\".  There is no reason for the typical xrolodex\n\
+user to specify the delimiter option; it is transparent during normal\n\
+xrolodex use.  Note, however, that you can dynamically modify the\n\
+delimiter sequence from the \"Options\" menu.\n\
+\n\
+Unless otherwise specified using the `directoryMask' resource,\n\
+xrolodex uses your home directory as the reference point for the\n\
+file selection box.\n\
+\n\
+The `findSensitive' and `findWraparound' resources control the\n\
+start-up states of the \"Case sensitive\" and \"Wraparound\" toggles\n\
+in the \"Find Entry...\" window.\n\
+\n\
+The `forceSave' resource controls whether the \"Save\" option in the\n\
+\"File\" menu saves the rolodex file or simply ignores the save request\n\
+when there have been no modifications.\n\
+\n\
+The `printCommand' resource sets the default/start-up value for the\n\
+print command.  The `printFormfeed' and `printStandardOutput'\n\
+resources set the default/start-up values for the toggles in the\n\
+Print dialog box (see the help topic \"Printing\").\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"Technical Support",
+"Technical Support:\n\
+\n\
+Version:  xrolodex 1.6\n\
+\n\
+Developer:\n\
+\n\
+Iris Computing Laboratories\n\
+The Spectro Group, Inc.\n\
+3916 Juan Tabo Blvd. NE\n\
+Suite 35\n\
+Albuquerque, New Mexico 87111  USA\n\
+\n\
+Phone:  +1-505-298-2700  (USA, Mountain Time Zone)\n\
+Fax:    +1-505-298-6404\n\
+Email:  support@spectro.com\n\
+Web:    http://www.spectro.com\n\
+\n\
+Programmer:  Jerry Smith (jsmith@spectro.com)\n\
+\n\
+\n\
+Our website always has the latest version of xrolodex.\n\
+Releases posted elsewhere may be out of date.\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{"Legal Notice",
+"Legal Notice:\n\
+\n\
+The proper name Rolodex(R) is a registered trademark of the\n\
+Rolodex Corporation.\n\
+\n\
+xrolodex is Copyright 1991 - 1996,\n\
+\n\
+Iris Computing Laboratories\n\
+The Spectro Group, Inc.\n\
+3916 Juan Tabo Blvd. NE\n\
+Suite 35\n\
+Albuquerque, New Mexico 87111  USA\n\
+\n\
+This software is provided for demonstration purposes only.  As\n\
+freely-distributed, modifiable source code, this software carries\n\
+absolutely no warranty.  Iris Computing Laboratories disclaims\n\
+all warranties for this software, including any implied warranties\n\
+of merchantability and fitness, and shall not be liable for\n\
+damages of any type resulting from its use.\n\
+\n\
+Permission to use, copy, modify, and distribute this source code\n\
+for any purpose and without fee is hereby granted, provided that\n\
+the above copyright and this permission notice appear in all copies\n\
+and supporting documentation, and provided that Iris Computing\n\
+Laboratories not be named in advertising or publicity pertaining\n\
+to the redistribution of this software without specific, written\n\
+prior permission.\n\
+\n\
+"
+		},
+		/* HELP TOPIC */
+		{NULL, NULL},
+	};

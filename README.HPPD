@@ -1,0 +1,15 @@
+Package name:     xrolodex
+Version number:   1.6
+Original author:  Jerry Smith <jsmith@spectro.com>
+Original URL:     http://www.sco.com/skunkware/uw7/x11/apps/xrolodex/
+HP-UX URL:        http://hpux.connect.org.uk/hppd/cgi-bin/search?package=&term=xrolodex-
+Install tree:     /opt/xrolodex
+Report bugs to:   steff@connect.org.uk
+Tested on:        HP 9000/780/C160 running HP-UX 11.00
+C compiler used:  Version A.11.01.02
+Purpose:
+Rolodex(tm) Motif-based application. Keeps a track of a set of cards containing
+information, allowing the user to edit, sort, search, browse, add or delete
+card entries. Comes with a comprehensive built-in help system.
+Date archived:    Tue  7 Dec 1999
+Special notes:    HPUX.Install is worth a read.

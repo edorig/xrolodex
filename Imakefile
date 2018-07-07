@@ -1,0 +1,22 @@
+#### formatted with 4-column tabs ####
+
+#ifdef HPArchitecture
+          COPTS = -Aa -D_HPUX_SOURCE
+      CCOPTIONS = $(COPTS) -I/usr/include/Motif1.2
+         XMLIB  = -L/usr/lib/Motif1.2 -lXm 
+#endif
+
+        DEFINES = -DWIDGET_ACCESS -DMANUAL_CLIP
+  EXTRA_DEFINES = -DWIDGET_ACCESS -DMANUAL_CLIP
+       INCLUDES = $(MCLIENTINCLUDES)
+LOCAL_LIBRARIES = $(XMLIB) $(XTOOLLIB) $(XLIB)
+
+           SRCS = xrolo.c xrolo.db.c xrolo.index.c help.c streamdb.c \
+                  ctrlpanel.c editor.c listshell.c dialog.c strstr.c \
+                  motif.c
+           OBJS = xrolo.o xrolo.db.o xrolo.index.o help.o streamdb.o \
+                  ctrlpanel.o editor.o listshell.o dialog.o strstr.o \
+                  motif.o
+
+ComplexProgramTarget(xrolodex)
+InstallAppDefaults(XRolodex)
