@@ -1261,9 +1261,9 @@ int order, line;
 	database_entry_ptr =
 		move_forward_n_lines(node->database_entry->text, line - 1);
 	if (order == streamdb_ASCEND)
-		return (strcmp(entry_ptr, database_entry_ptr) <= 0);
+		return (strcoll(entry_ptr, database_entry_ptr) <= 0);
 	else
-		return (strcmp(entry_ptr, database_entry_ptr) >= 0);
+		return (strcoll(entry_ptr, database_entry_ptr) >= 0);
 }	/* go_left */
 
 

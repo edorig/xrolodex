@@ -240,6 +240,7 @@ static XtResource resources[] = {
 
 #ifdef FALLBACK_RES
 char *fallback_resources[] = {
+  "*fontList: -misc-fixed-medium-r-normal--14-130-75-75-c-70-iso10646-1",
 	"*mainWindow*horizontalSpacing: 5",
 	"*mainWindow*verticalSpacing: 5",
 	"*databaseLabel*marginWidth: 5",
@@ -324,6 +325,7 @@ char *argv[];
 		printf("\nusage:  xrolodex [<filename>] [-iconName <icon name>]\n\n");
 		exit(0);
 	}
+	XtSetLanguageProc(NULL,NULL,NULL); 
 	topLevel = XtAppInitialize(&app, xrolo_APP_CLASS,
 		(XrmOptionDescList) NULL, 0, &argc, argv,
 #ifdef FALLBACK_RES
